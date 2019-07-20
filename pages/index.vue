@@ -1,13 +1,33 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <logo />
-                <h1 class="title">nuxt-lab</h1>
-                <h2 class="subtitle">My fine Nuxt.js project</h2>
-                <div class="links">
-                    <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-                    <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+    <div class="content">
+        <Navigation />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <logo />
+                    <h1 class="title">nuxt-lab</h1>
+                    <h2 class="subtitle">My fine Nuxt.js project</h2>
+                    <div class="links">
+                        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
+                        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <b-button v-b-modal.modal-1>Launch demo modal</b-button>
+
+                    <b-modal id="modal-1" title="BootstrapVue">
+                        <p class="my-4">Hello from modal!</p>
+                    </b-modal>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-primary">Loading content...</p>
+                </div>
+                <div class="col-md-12">
+                    <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
                 </div>
             </div>
         </div>
@@ -17,12 +37,15 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import Navigation from '~/components/global/navigation/index.vue'
 import Footer from '~/components/global/footer/index.vue'
+import axios from 'axios'
 
 export default {
     components: {
         Logo,
-        Footer
+        Footer,
+        Navigation
     }
 }
 </script>
