@@ -11,18 +11,15 @@
                 </div>
             </div>
         </div>
-        <Footer />
     </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
-import Footer from '~/components/global/footer/index.vue'
 
 export default {
     components: {
-        Logo,
-        Footer
+        Logo
     }
 }
 </script>
