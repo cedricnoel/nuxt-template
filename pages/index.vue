@@ -14,20 +14,24 @@
                 </div>
             </div>
             <div class="row">
-                <div>
-                    <b-button v-b-modal.modal-1>Launch demo modal</b-button>
-
-                    <b-modal id="modal-1" title="BootstrapVue">
-                        <p class="my-4">Hello from modal!</p>
-                    </b-modal>
+                <div class="col-md-12">
+                    <p>Bonjour {{ currentUser.username }}</p>
+                    <div class="form-group">
+                        <label for="">New name</label>
+                        <input type="text" ref="username">
+                        <button @click="changeName">Change name</button>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <p class="text-primary">Loading content...</p>
+                    <p v-if="currentUser.isLoggedIn">Vous ête connecté</p>
+                    <p v-else>Vous n'ête pas connecté</p>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
-                    <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+                    <button @click="logIn">Log In</button>
                 </div>
             </div>
         </div>
@@ -39,13 +43,25 @@
 import Logo from '~/components/Logo.vue'
 import Navigation from '~/components/global/navigation/index.vue'
 import Footer from '~/components/global/footer/index.vue'
-import axios from 'axios'
 
 export default {
+    data() {
+        return {
+            currentUser: this.$store.state.users
+        }
+    },
     components: {
         Logo,
         Footer,
         Navigation
+    },
+    methods: {
+        logIn() {
+            this.$store.commit('users/logIn')
+        },
+        changeName() {
+            this.$store.commit('users/setName', this.$refs.username.value)
+        }
     }
 }
 </script>

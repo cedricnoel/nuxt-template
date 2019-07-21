@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Blog post</h1>
+                <p>Bienvenu {{ currentUser.username }}</p>
             </div>
         </div>
         <div class="row">
@@ -33,7 +34,8 @@
 export default {
     data() {
         return {
-            Bid: ''
+            Bid: '',
+            currentUser: this.$store.state.users
         }
     },
     methods: {
